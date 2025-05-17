@@ -1,29 +1,39 @@
 class Order:
-    _all_orders = []  # Class-level to track all orders
+    _all_orders = []
 
-def __init__(self, customer, coffee, price):
-    from customer import Customer
-    from coffee import Coffee
-    if not isinstance(customer, Customer):
-        raise TypeError("Customer must be a Customer instance")
-    if not isinstance(coffee, Coffee):
-        raise TypeError("Coffee must be a Coffee instance")
-    if not isinstance(price, (int, float)):
-        raise TypeError("Price must be a number")
-    if not 1.0 <= float(price) <= 10.0:
-        raise ValueError("Price must be between 1.0 and 10.0")
-    self._customer = customer
-    self._coffee = coffee
-    self._price = float(price)
+    def __init__(self, customer, coffee, price):
+        self.customer = customer
+        self.coffee = coffee
+        self.price = price
 
-@property
-def customer(self):
-    return self._customer
+    @property
+    def customer(self):
+        return self._customer
 
-@property
-def coffee(self):
-    return self._coffee
+    @customer.setter
+    def customer(self, value):
+        from customer import Customer
+        if not isinstance(value, Customer):
+            raise TypeError("Customer must be a Customer instance")
+        self._customer = value
 
-@property
-def price(self):
-    return self._price
+    @property
+    def coffee(self):
+        return self._coffee
+
+    @coffee.setter
+    def coffee(self, value):
+        from coffee import Coffee
+        if not isinstance(value, Coffee):
+            raise TypeError("Coffee must be a Coffee instance")
+        self._coffee = value
+
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, value):
+        if not isinstance(value, float) or not (1.0 <= value <= 10.0):
+            raise ValueError("Price must be a float between 1.0 and 10.0")
+        self._price = value
