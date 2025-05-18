@@ -6,9 +6,9 @@ def main():
     print("=== Coffee Shop Debug Demo ===")
 
     # Create customers
-    alice = Customer("Alice")
-    bob = Customer("Bob")
-    print(f"Created customers: {alice.name}, {bob.name}")
+    trevour = Customer("Trevour")
+    joy = Customer("Joy")
+    print(f"Created customers: {trevour.name}, {joy.name}")
 
     # Create coffees
     latte = Coffee("Latte")
@@ -16,16 +16,16 @@ def main():
     print(f"Created coffees: {latte.name}, {espresso.name}")
 
     # Create orders
-    order1 = alice.create_order(latte, 5.0)
-    order2 = alice.create_order(espresso, 4.0)
-    order3 = bob.create_order(latte, 6.0)
+    order1 = trevour.create_order(latte, 5.0)
+    order2 = trevour.create_order(espresso, 4.0)
+    order3 = joy.create_order(latte, 6.0)
     print(f"Order 1: {order1.customer.name} ordered {order1.coffee.name} for ${order1.price}")
     print(f"Order 2: {order2.customer.name} ordered {order2.coffee.name} for ${order2.price}")
     print(f"Order 3: {order3.customer.name} ordered {order3.coffee.name} for ${order3.price}")
 
     # Test relationship methods
-    print(f"\nAlice's orders: {len(alice.orders())}")
-    print(f"Alice's coffees: {[coffee.name for coffee in alice.coffees()]}")
+    print(f"\nTrevour's orders: {len(trevour.orders())}")
+    print(f"Trevour's coffees: {[coffee.name for coffee in trevour.coffees()]}")
     print(f"Latte's customers: {[customer.name for customer in latte.customers()]}")
     print(f"Latte's order count: {latte.num_orders()}")
 
